@@ -1,7 +1,8 @@
 import React from 'react';
 
-export default(
+const Home = props => (
   <div>
     <h3>I am protected</h3>
-  </div>
-);
+  </div>);
+
+export default Home;
