@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Switch } from 'react-router';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const ConnectedSwitch = connect(state => ({
+  location: state.routerReducer.location
+}))(Switch);
 
-export default App;
+
+const AppContainer = props => (
+  <div>
+    <p>hey there</p>
+    <ConnectedSwitch>
+      {props.children}
+    </ConnectedSwitch>
+  </div>
+);
+
+export default connect(state => {
+  return {location: state.routerReducer.location}
+})(AppContainer);
+
+
